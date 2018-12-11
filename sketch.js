@@ -65,10 +65,10 @@ function setup() {
   cloudLImg = loadImage('images/cloudL.png');
   cloudRImg = loadImage('images/cloudR.png');
  
-  mainCloudImgR = loadImage('images/cloud_main_flipped.png');
+  mainCloudImgR = loadImage('images/cloud_main_flip.png');
 
    mainCloud = loadAnimation("images/cloud_main_1.png","images/cloud_main_2.png","images/cloud_main_3.png","images/cloud_main_4.png","images/cloud_main_5.png","images/cloud_main_6.png","images/cloud_main_7.png","images/cloud_main_8.png","images/cloud_main_9.png",)
-   mainCloudR = loadAnimation("images/flipped/cloud_main_1.png","images/flipped/cloud_main_2.png","images/flipped/cloud_main_3.png","images/flipped/cloud_main_4.png","images/flipped/cloud_main_5.png","images/flipped/cloud_main_6.png","images/flipped/cloud_main_7.png","images/flipped/cloud_main_8.png","images/flipped/cloud_main_9.png",)
+   mainCloudR = loadAnimation("images/flip/cloud_main_1.png","images/flip/cloud_main_2.png","images/flip/cloud_main_3.png","images/flip/cloud_main_4.png","images/flip/cloud_main_5.png","images/flip/cloud_main_6.png","images/flip/cloud_main_7.png","images/flip/cloud_main_8.png","images/flip/cloud_main_9.png",)
    main.addAnimation('mainCloud', mainCloud);
    main.addAnimation('mainCloudR', mainCloudR);
    song.loop();
