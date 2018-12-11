@@ -1,11 +1,7 @@
-//breakout close (core mechanics)
-//mouse to control the main, click to start
 
 var main, wallTop, wallBottom, wallLeft, wallRight;
-var bricks;
 var MAX_SPEED = 3;
-var WALL_THICKNESS = 30;
-var COLUMNS = 16;
+var wallSize = 30;
 var s;
 var screamImg, screamImg2, screamImg3, screamImg4, screamImg5, screamImg6, screamImg7, screamImg8, screamImg9, screamImg10, screamImg11;
 var sprinkle;
@@ -48,12 +44,11 @@ function setup() {
    sprinkleHolder = [];
   createCanvas(600, h);
   s = second();
-  red = 210;
  
-  wallLeft = createSprite(-WALL_THICKNESS/2, height/2, WALL_THICKNESS, height);
+  wallLeft = createSprite(-wallSize/2, height/2, wallSize, height);
   wallLeft.immovable = true;
 
-  wallRight = createSprite(width+WALL_THICKNESS/2, height/2, WALL_THICKNESS, height);
+  wallRight = createSprite(width+wallSize/2, height/2, wallSize, height);
   wallRight.immovable = true;
   
   cloudL = createSprite(275, 100, 300, 575);
@@ -71,22 +66,20 @@ function setup() {
   cloudRImg = loadImage('images/cloudR.png');
  
   mainCloudImgR = loadImage('images/cloud_main_flipped.png');
-  cloudL.setVelocity(0,-1);
-  cloudR.setVelocity(0,-1);
-  cloudL2.setVelocity(0,-1);
-  cloudR2.setVelocity(0,-1);
+
    mainCloud = loadAnimation("images/cloud_main_1.png","images/cloud_main_2.png","images/cloud_main_3.png","images/cloud_main_4.png","images/cloud_main_5.png","images/cloud_main_6.png","images/cloud_main_7.png","images/cloud_main_8.png","images/cloud_main_9.png",)
-   mainCloudR = loadAnimation("images/Flipped/cloud_main_1.png","images/Flipped/cloud_main_2.png","images/Flipped/cloud_main_3.png","images/Flipped/cloud_main_4.png","images/Flipped/cloud_main_5.png","images/Flipped/cloud_main_6.png","images/Flipped/cloud_main_7.png","images/Flipped/cloud_main_8.png","images/Flipped/cloud_main_9.png",)
+   mainCloudR = loadAnimation("images/flipped/cloud_main_1.png","images/flipped/cloud_main_2.png","images/flipped/cloud_main_3.png","images/flipped/cloud_main_4.png","images/flipped/cloud_main_5.png","images/flipped/cloud_main_6.png","images/flipped/cloud_main_7.png","images/flipped/cloud_main_8.png","images/flipped/cloud_main_9.png",)
    main.addAnimation('mainCloud', mainCloud);
    main.addAnimation('mainCloudR', mainCloudR);
    song.loop();
    endScreen = false;
+   red = 210;
 }
 
 function draw() { 
   background(red, 199, 255);
 
-  if(clickOne == false){
+  if(clickOne == false && endScreen == false){
   	image(startScreen, 0, 0);
   }
 
@@ -98,6 +91,10 @@ function draw() {
   }
 
   else{
+  	  cloudL.setVelocity(0,-1);
+  cloudR.setVelocity(0,-1);
+  cloudL2.setVelocity(0,-1);
+  cloudR2.setVelocity(0,-1);
   s = millis();
   cloudL.addImage(cloudLImg);
   cloudR.addImage(cloudRImg);
@@ -141,7 +138,7 @@ if(!(iceCream.position.x  <  50|| iceCream.position.x > width-7)){
   	iceCream.position.x = width/2;
   }     
 
-     if (frameCount % 100 == 0) {
+     if (frameCount % 40 == 0) {
      	red++;
      }   
 
@@ -189,8 +186,8 @@ if(!(iceCream.position.x  <  50|| iceCream.position.x > width-7)){
     		}
     		else if(score > 30 && score <= 33){
     			endScreen = true;
-    			clickOne = false;
     			clickCount = 0;
+    			clickOne = false;
     		}
    			sprinkleHolder[i].remove();
    			sprinkleHolder[i].position.y = height;
